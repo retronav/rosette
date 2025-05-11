@@ -1,0 +1,33 @@
+{
+  "name": "rosette",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --sourcemap --clean"
+  },
+  "keywords": [
+    "notion",
+    "notion-api",
+    "cms"
+  ],
+  "author": "Pranav Karawale",
+  "license": "ISC",
+  "description": "Get Notion databases in a structured format and convert Notion pages to HTML.",
+  "devDependencies": {
+    "@types/node": "^22.15.17",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@notionhq/client": "^3.0.1",
+    "@sindresorhus/slugify": "^2.2.1",
+    "zod": "^3.24.4"
+  }
+}
