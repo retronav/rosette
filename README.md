@@ -1,15 +1,11 @@
 # Rosette
 
-Rosette is a library that transforms Notion pages into structured JSON and HTML, turning Notion into a lightweight, elegant CMS. Just like a rosette, clean, beautiful, structured.
+Rosette is a library that transforms Notion pages into structured JSON and HTML, turning Notion into a lightweight, elegant CMS. Just like a @retronav/rosette, clean, beautiful, structured.
 
 ## Installation
 
 ```bash
-npm install rosette
-# or
-yarn add rosette
-# or
-pnpm add rosette
+npm install @retronav/rosette
 ```
 
 ## Usage
@@ -17,7 +13,7 @@ pnpm add rosette
 First, you'll need a Notion API key and a database ID. You can get your API key from [Notion's integrations page](https://www.notion.so/my-integrations).
 
 ```typescript
-import { NotionDatabaseManager, schemas } from "rosette";
+import { NotionDatabaseManager, schemas } from "@retronav/rosette";
 import { Client } from "@notionhq/client";
 import { z } from "zod";
 

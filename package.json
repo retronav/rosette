@@ -1,5 +1,5 @@
 {
-  "name": "rosette",
+  "name": "@retronav/rosette",
   "version": "0.0.1",
   "type": "module",
   "main": "dist/index.js",
