@@ -26,12 +26,12 @@ const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
 // 2. Define your database schema using Zod and Rosette's schema helpers
 const mySchema = z.object({
-	Title: schemas.title, // For 'Title' property
-	Description: schemas.text, // For 'Text' or 'Rich Text' property
-	Date: schemas.date, // For 'Date' property
-	Tags: schemas.multiSelect, // For 'Multi-select' property
-	Published: schemas.checkbox, // For 'Checkbox' property
-	// Add more properties as needed, matching your Notion database structure
+  Title: schemas.title, // For 'Title' property
+  Description: schemas.text, // For 'Text' or 'Rich Text' property
+  Date: schemas.date, // For 'Date' property
+  Tags: schemas.multiSelect, // For 'Multi-select' property
+  Published: schemas.checkbox // For 'Checkbox' property
+  // Add more properties as needed, matching your Notion database structure
 });
 
 // 3. Create a NotionDatabaseManager instance
@@ -40,27 +40,27 @@ const manager = new NotionDatabaseManager(notion, mySchema, databaseId);
 
 // 4. Process the database entries
 async function main() {
-	try {
-		const entries = await manager.process({
-			// Optional: Add a filter if needed
-			// filter: {
-			//   property: 'Published',
-			//   checkbox: {
-			//     equals: true,
-			//   },
-			// },
-			// Optional: Customize slug generation
-			// slugger: (properties) => customSlugifyFunction(properties.Title),
-		});
+  try {
+    const entries = await manager.process({
+      // Optional: Add a filter if needed
+      // filter: {
+      //   property: 'Published',
+      //   checkbox: {
+      //     equals: true,
+      //   },
+      // },
+      // Optional: Customize slug generation
+      // slugger: (properties) => customSlugifyFunction(properties.Title),
+    });
 
-		entries.forEach((entry, id) => {
-			console.log("Entry ID:", id);
-			console.log("Properties:", entry.properties); // Parsed and typed according to your schema
-			console.log("HTML Content:", entry.content); // HTML content of the Notion page
-		});
-	} catch (error) {
-		console.error("Failed to process Notion database:", error);
-	}
+    entries.forEach((entry, id) => {
+      console.log("Entry ID:", id);
+      console.log("Properties:", entry.properties); // Parsed and typed according to your schema
+      console.log("HTML Content:", entry.content); // HTML content of the Notion page
+    });
+  } catch (error) {
+    console.error("Failed to process Notion database:", error);
+  }
 }
 
 main();

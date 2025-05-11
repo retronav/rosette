@@ -1,0 +1,55 @@
+{
+  "object": "page",
+  "id": "e2e_page_2_id",
+  "created_time": "2024-05-01T09:00:00Z",
+  "last_edited_time": "2024-05-01T10:10:00Z",
+  "created_by": { "object": "user", "id": "user_e2e_1" },
+  "last_edited_by": { "object": "user", "id": "user_e2e_1" },
+  "parent": { "type": "database_id", "database_id": "test_db_id" },
+  "archived": false,
+  "in_trash": false,
+  "url": "https://www.notion.so/e2e_page_2_id",
+  "public_url": "https://myblog.com/my-first-blog-post",
+  "icon": { "type": "emoji", "emoji": "✍️" },
+  "cover": {
+    "type": "external",
+    "external": { "url": "https://example.com/blog_cover.jpg" }
+  },
+  "properties": {
+    "Title": {
+      "id": "title",
+      "type": "title",
+      "title": [
+        {
+          "type": "text",
+          "text": { "content": "My First Blog Post" },
+          "plain_text": "My First Blog Post"
+        }
+      ]
+    },
+    "Summary": {
+      "id": "summary",
+      "type": "rich_text",
+      "rich_text": [
+        {
+          "type": "text",
+          "text": { "content": "A short summary of the post." },
+          "plain_text": "A short summary of the post."
+        }
+      ]
+    },
+    "Published": {
+      "id": "published",
+      "type": "checkbox",
+      "checkbox": true
+    },
+    "Tags": {
+      "id": "tags",
+      "type": "multi_select",
+      "multi_select": [
+        { "id": "tag1", "name": "Tech", "color": "blue" },
+        { "id": "tag2", "name": "Tutorial", "color": "green" }
+      ]
+    }
+  }
+}
