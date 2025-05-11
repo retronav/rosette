@@ -1,6 +1,6 @@
 # Rosette
 
-Rosette is a library that transforms Notion pages into structured JSON and HTML, turning Notion into a lightweight, elegant CMS. Just like a rosette.
+Rosette is a library that transforms Notion pages into structured JSON and HTML, turning Notion into a lightweight, elegant CMS. Just like a rosette, clean, beautiful, structured.
 
 ## Installation
 
