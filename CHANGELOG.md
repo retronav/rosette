@@ -1,5 +1,11 @@
 # @retronav/rosette
 
+## 0.1.1
+
+### Patch Changes
+
+- b031ce4: Expose url in files property
+
 ## 0.1.0
 
 ### Minor Changes
