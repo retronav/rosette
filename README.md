@@ -1,6 +1,10 @@
+<p align="center">
+  <img src="./assets/logo.png" height="200" alt="Rosette logo">
+</p>
+
 # Rosette
 
-Rosette is a library that transforms Notion pages into structured JSON and HTML, turning Notion into a lightweight, elegant CMS. Just like a @retronav/rosette, clean, beautiful, structured.
+Rosette is a library that transforms Notion pages into structured JSON and HTML, turning Notion into a lightweight, elegant CMS. Just like a rosette, clean, beautiful, structured.
 
 ## Installation
 
