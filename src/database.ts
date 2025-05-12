@@ -35,7 +35,7 @@ export class NotionDatabaseManager<T extends ZodType> {
    */
   private entries = new Map<
     string,
-    { properties: z.infer<T>; content: string }
+    { properties: z.infer<T>; slug: string; content: string }
   >();
 
   /**
@@ -70,6 +70,7 @@ export class NotionDatabaseManager<T extends ZodType> {
       this.slugs.set(entry.id, slug);
       this.entries.set(entry.id, {
         properties,
+        slug: slug,
         content: ""
       });
     }
@@ -77,7 +78,7 @@ export class NotionDatabaseManager<T extends ZodType> {
     for (const entry of response.results as PageObjectResponse[]) {
       const blocks = await this.converter.fetchBlockChildren(entry.id);
       this.entries.set(entry.id, {
-        properties: this.entries.get(entry.id)!.properties,
+        ...this.entries.get(entry.id)!,
         content: this.converter.blocksToHtml(blocks, this.slugs)
       });
     }
