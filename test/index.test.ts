@@ -351,9 +351,8 @@ describe("NotionDatabaseManager", () => {
     });
 
     it("should use custom slugger if provided", async () => {
-      const customSlugger = vi.fn(
-        (props: any) =>
-          slugify(`custom-${props.Title}`)
+      const customSlugger = vi.fn((props: any) =>
+        slugify(`custom-${props.Title}`)
       );
       await manager.process({ slugger: customSlugger });
 
@@ -371,7 +370,10 @@ describe("NotionDatabaseManager", () => {
         property: "Published",
         checkbox: { equals: true }
       };
-      await manager.process({ filter, slugger: (props: any) => slugify(props.Title) });
+      await manager.process({
+        filter,
+        slugger: (props: any) => slugify(props.Title)
+      });
       expect(mockNotionClient.databases.query).toHaveBeenCalledWith({
         database_id: dbId,
         filter
@@ -388,7 +390,9 @@ describe("NotionDatabaseManager", () => {
         type: "page_or_database",
         page_or_database: {}
       };
-      const entries = await manager.process({ slugger: (props: any) => slugify(props.Title) });
+      const entries = await manager.process({
+        slugger: (props: any) => slugify(props.Title)
+      });
       expect(entries.size).toBe(0);
       expect(mockNotionClient.blocks.children.list).not.toHaveBeenCalled();
     });

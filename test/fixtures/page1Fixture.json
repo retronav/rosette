@@ -32,6 +32,22 @@
           "plain_text": "Page one description."
         }
       ]
+    },
+    "Attachments": {
+      "id": "files_id",
+      "type": "files",
+      "files": [
+        {
+          "name": "example.pdf",
+          "type": "external",
+          "external": { "url": "https://example.com/example.pdf" }
+        },
+        {
+          "name": "image.png",
+          "type": "external",
+          "external": { "url": "https://example.com/image.png" }
+        }
+      ]
     }
   },
   "icon": null,

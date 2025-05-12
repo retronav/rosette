@@ -195,9 +195,13 @@ export namespace properties {
    */
   export const files = z
     .object({
-      files: z.array(z.object({ name: z.string() }))
+      files: z.array(
+        z.object({ name: z.string(), external: z.object({ url: z.string() }) })
+      )
     })
-    .transform((data) => data.files.map((file) => file.name));
+    .transform((data) =>
+      data.files.map((file) => ({ name: file.name, url: file.external.url }))
+    );
 
   /**
    * Schema for parsing and transforming a Notion 'created_by' property.
