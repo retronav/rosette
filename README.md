@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/logo.png" height="200" alt="Rosette logo">
+  <img src="./assets/logo.png" alt="Rosette logo">
 </p>
 
 # Rosette
