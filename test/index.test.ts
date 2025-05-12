@@ -1,13 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import {
-  NotionConverter,
-  NotionDatabaseManager,
-  title,
-  text,
-  checkbox,
-  multiSelect,
-  date
-} from "../src"; // Adjusted imports for schemas
+import { NotionConverter, NotionDatabaseManager, properties } from "../src";
 import { Client } from "@notionhq/client";
 import { z } from "zod";
 import {
@@ -308,8 +300,8 @@ describe("NotionConverter", () => {
 describe("NotionDatabaseManager", () => {
   let manager: NotionDatabaseManager<any>;
   const testSchema = z.object({
-    Title: title,
-    Description: text
+    Title: properties.title,
+    Description: properties.text
   });
   const dbId = "test_db_id";
 
@@ -402,11 +394,11 @@ describe("NotionDatabaseManager", () => {
   // --- E2E Test Scenarios ---
   describe("E2E Scenarios", () => {
     const e2eSchema = z.object({
-      Title: title,
-      Summary: text.optional(), // Optional for page 3
-      Published: checkbox,
-      Tags: multiSelect.optional(), // Optional for page 3
-      ScheduledDate: date.optional() // Optional for page 2
+      Title: properties.title,
+      Summary: properties.text.optional(), // Optional for page 3
+      Published: properties.checkbox,
+      Tags: properties.multiSelect.optional(), // Optional for page 3
+      ScheduledDate: properties.date.optional() // Optional for page 2
     });
 
     beforeEach(() => {
