@@ -65,22 +65,74 @@ export class NotionDatabaseManager<T extends ZodType> {
     });
 
     for (const entry of response.results as PageObjectResponse[]) {
-      const properties = this.schema.parse(entry.properties);
-      const slug = currentSlugger({ ...properties }); // Use currentSlugger
-      this.slugs.set(entry.id, slug);
-      this.entries.set(entry.id, {
-        properties,
-        slug: slug,
-        content: ""
-      });
+      try {
+        const properties = this.schema.parse(entry.properties);
+        const slug = currentSlugger({ ...properties }); // Use currentSlugger
+        this.slugs.set(entry.id, slug);
+        this.entries.set(entry.id, {
+          properties,
+          slug: slug,
+          content: ""
+        });
+      } catch (error) {
+        let message = `Failed to parse schema for page ID ${entry.id}.`;
+        if (error instanceof z.ZodError) {
+          message += ` Validation issues: ${JSON.stringify(error.issues, null, 2)}`;
+        } else if (error instanceof Error) {
+          message += ` Original error: ${error.message}`;
+        } else {
+          message += ` Original error: ${String(error)}`;
+        }
+        const detailedError = new Error(message);
+        if (error instanceof Error) {
+          (detailedError as any).cause = error;
+        }
+        throw detailedError;
+      }
     }
 
-    for (const entry of response.results as PageObjectResponse[]) {
-      const blocks = await this.converter.fetchBlockChildren(entry.id);
-      this.entries.set(entry.id, {
-        ...this.entries.get(entry.id)!,
-        content: this.converter.blocksToHtml(blocks, this.slugs)
-      });
+    const contentProcessingPromises = (
+      response.results as PageObjectResponse[]
+    ).map(async (entry) => {
+      try {
+        const blocks = await this.converter.fetchBlockChildren(entry.id);
+        // this.slugs is populated in the previous loop and is read-only here
+        const htmlContent = this.converter.blocksToHtml(blocks, this.slugs);
+        return { entryId: entry.id, htmlContent };
+      } catch (error) {
+        let message = `Failed to process content for entry ID ${entry.id}.`;
+        if (error instanceof Error) {
+          message += ` Original error: ${error.message}`;
+        } else {
+          message += ` Original error: ${String(error)}`;
+        }
+        const detailedError = new Error(message);
+        if (error instanceof Error) {
+          // Attach original error as cause for better debugging
+          (detailedError as any).cause = error;
+        }
+        throw detailedError;
+      }
+    });
+
+    try {
+      const processedContents = await Promise.all(contentProcessingPromises);
+
+      for (const { entryId, htmlContent } of processedContents) {
+        const existingEntry = this.entries.get(entryId);
+        if (existingEntry) {
+          this.entries.set(entryId, {
+            ...existingEntry,
+            content: htmlContent
+          });
+        } else {
+          throw new Error(
+            `[NotionDatabaseManager] Entry with ID ${entryId} was not found for content update. It should have been populated in the initial processing stage.`
+          );
+        }
+      }
+    } catch (error) {
+      throw error;
     }
 
     return this.entries;
