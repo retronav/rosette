@@ -21,7 +21,7 @@
     "cms"
   ],
   "author": "Pranav Karawale",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "description": "Get Notion databases in a structured format and convert Notion pages to HTML.",
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
