@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, vi } from "vitest";
 import { NotionConverter, NotionDatabaseManager, properties } from "../src";
 import { Client } from "@notionhq/client";
 import { z } from "zod";
+import slugify from "@sindresorhus/slugify";
 import {
   mockNotionClient,
   mockRichTextFixtures,
@@ -328,7 +329,9 @@ describe("NotionDatabaseManager", () => {
 
   describe("process", () => {
     it("should process database entries, parse properties, generate slugs, and fetch content", async () => {
-      const entries = await manager.process();
+      const entries = await manager.process({
+        slugger: (props: any) => slugify(props.Title)
+      });
 
       expect(mockNotionClient.databases.query).toHaveBeenCalledWith({
         database_id: dbId,
@@ -350,7 +353,7 @@ describe("NotionDatabaseManager", () => {
     it("should use custom slugger if provided", async () => {
       const customSlugger = vi.fn(
         (props: any) =>
-          `custom-${props.Title.toLowerCase().replace(/\s+/g, "-")}`
+          slugify(`custom-${props.Title}`)
       );
       await manager.process({ slugger: customSlugger });
 
@@ -368,7 +371,7 @@ describe("NotionDatabaseManager", () => {
         property: "Published",
         checkbox: { equals: true }
       };
-      await manager.process({ filter });
+      await manager.process({ filter, slugger: (props: any) => slugify(props.Title) });
       expect(mockNotionClient.databases.query).toHaveBeenCalledWith({
         database_id: dbId,
         filter
@@ -385,7 +388,7 @@ describe("NotionDatabaseManager", () => {
         type: "page_or_database",
         page_or_database: {}
       };
-      const entries = await manager.process();
+      const entries = await manager.process({ slugger: (props: any) => slugify(props.Title) });
       expect(entries.size).toBe(0);
       expect(mockNotionClient.blocks.children.list).not.toHaveBeenCalled();
     });
@@ -479,7 +482,8 @@ describe("NotionDatabaseManager", () => {
 
     it("should correctly process a published blog post with various content types", async () => {
       const entries = await manager.process({
-        filter: { property: "Published", checkbox: { equals: true } }
+        filter: { property: "Published", checkbox: { equals: true } },
+        slugger: (props: any) => slugify(props.Title)
       });
 
       // Expecting only e2ePage2Fixture (published) due to the smarter mock query
@@ -509,7 +513,8 @@ describe("NotionDatabaseManager", () => {
 
     it("should correctly process an unpublished draft with code and quote blocks", async () => {
       const entries = await manager.process({
-        filter: { property: "Published", checkbox: { equals: false } }
+        filter: { property: "Published", checkbox: { equals: false } },
+        slugger: (props: any) => slugify(props.Title)
       });
 
       // Expecting only e2ePage3Fixture (unpublished)

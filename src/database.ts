@@ -4,7 +4,6 @@ import {
   QueryDatabaseParameters
 } from "@notionhq/client/build/src/api-endpoints";
 import { z, ZodType } from "zod";
-import { slugifyWithCounter } from "@sindresorhus/slugify";
 import { NotionConverter } from "./converter";
 
 /**
@@ -13,7 +12,6 @@ import { NotionConverter } from "./converter";
  */
 export class NotionDatabaseManager<T extends ZodType> {
   private converter: NotionConverter;
-  private defaultSlugger = slugifyWithCounter();
 
   /**
    * Creates an instance of NotionDatabaseManager.
@@ -51,14 +49,10 @@ export class NotionDatabaseManager<T extends ZodType> {
    * @param options.slugger - Optional function to generate a slug from entry properties. Defaults to a slug generated from the 'title' property.
    * @returns A promise that resolves to the map of processed entries.
    */
-  async process(
-    options: {
-      filter?: QueryDatabaseParameters["filter"];
-      slugger?: (properties: z.infer<T>) => string;
-    } = {}
-  ) {
-    const currentSlugger =
-      options.slugger ?? ((p: z.infer<T>) => this.defaultSlugger(p.Title));
+  async process(options: {
+    filter?: QueryDatabaseParameters["filter"];
+    slugger: (properties: z.infer<T>) => string;
+  }) {
     const response = await this.notion.databases.query({
       filter: options.filter,
       database_id: this.databaseId
@@ -67,7 +61,7 @@ export class NotionDatabaseManager<T extends ZodType> {
     for (const entry of response.results as PageObjectResponse[]) {
       try {
         const properties = this.schema.parse(entry.properties);
-        const slug = currentSlugger({ ...properties }); // Use currentSlugger
+        const slug = options.slugger({ ...properties });
         this.slugs.set(entry.id, slug);
         this.entries.set(entry.id, {
           properties,
