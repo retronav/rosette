@@ -196,14 +196,28 @@ export namespace properties {
   export const files = z
     .object({
       files: z.array(
-        z.object({ name: z.string(), external: z.object({ url: z.string() }) })
+        z
+          .object({ name: z.string() })
+          .and(
+            z
+              .object({ external: z.object({ url: z.string() }) })
+              .or(z.object({ file: z.object({ url: z.string() }) }))
+          ) // Changed to use 'and' for clarity
       )
     })
     .transform((data) =>
-      data.files.map((file) => ({ name: file.name, url: file.external.url }))
+      data.files.map((file) => ({
+        name: file.name,
+        url:
+          "external" in file
+            ? file.external.url
+            : "file" in file
+              ? file.file.url
+              : ""
+      }))
     );
 
-  /**
+    /**
    * Schema for parsing and transforming a Notion 'created_by' property.
    * Extracts the name of the user who created the item, or their ID if the name is not available.
    */
