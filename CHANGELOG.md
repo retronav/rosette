@@ -1,5 +1,11 @@
 # @retronav/rosette
 
+## 0.1.2
+
+### Patch Changes
+
+- 85af129: Support "file" property in files
+
 ## 0.1.1
 
 ### Patch Changes
