@@ -35,6 +35,11 @@
   },
   "dependencies": {
     "@notionhq/client": "^3.0.1",
+<<<<<<< HEAD
+=======
+    "hast-util-to-html": "^9.0.5",
+    "hastscript": "^9.0.1",
+>>>>>>> aa6ce94 (Initial Rewrite Commit)
     "zod": "^3.24.4"
   }
 }

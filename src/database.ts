@@ -1,8 +1,5 @@
 import { Client } from "@notionhq/client";
-import {
-  PageObjectResponse,
-  QueryDatabaseParameters
-} from "@notionhq/client/build/src/api-endpoints";
+import { PageObjectResponse } from "@notionhq/client";
 import { z, ZodType } from "zod";
 import { NotionConverter } from "./converter";
 
@@ -50,7 +47,7 @@ export class NotionDatabaseManager<T extends ZodType> {
    * @returns A promise that resolves to the map of processed entries.
    */
   async process(options: {
-    filter?: QueryDatabaseParameters["filter"];
+    filter?: Parameters<Client["databases"]["query"]>["0"]["filter"];
     slugger: (properties: z.infer<T>) => string;
   }) {
     const response = await this.notion.databases.query({
@@ -89,9 +86,8 @@ export class NotionDatabaseManager<T extends ZodType> {
       response.results as PageObjectResponse[]
     ).map(async (entry) => {
       try {
-        const blocks = await this.converter.fetchBlockChildren(entry.id);
-        // this.slugs is populated in the previous loop and is read-only here
-        const htmlContent = this.converter.blocksToHtml(blocks, this.slugs);
+        const blocks = await this.converter.fetch(entry.id);
+        const htmlContent = this.converter.blocksToHtml(blocks.children);
         return { entryId: entry.id, htmlContent };
       } catch (error) {
         let message = `Failed to process content for entry ID ${entry.id}.`;
