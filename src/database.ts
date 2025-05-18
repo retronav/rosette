@@ -86,8 +86,8 @@ export class NotionDatabaseManager<T extends ZodType> {
       response.results as PageObjectResponse[]
     ).map(async (entry) => {
       try {
-        const blocks = await this.converter.fetch(entry.id);
-        const htmlContent = this.converter.blocksToHtml(blocks.children);
+        const page = await this.converter.fetch(entry.id);
+        const htmlContent = this.converter.blocksToHtml(page.children);
         return { entryId: entry.id, htmlContent };
       } catch (error) {
         let message = `Failed to process content for entry ID ${entry.id}.`;

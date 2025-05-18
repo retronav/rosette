@@ -45,7 +45,8 @@ export class NotionConverter {
       block_id: blockOrPageId
     })) as NotionBlock;
 
-    if (block.has_children) {
+    // @ts-expect-error
+    if (block.has_children || block.object === "page") {
       const childrenResponse = await this.notion.blocks.children.list({
         block_id: blockOrPageId
       });

@@ -1,0 +1,49 @@
+{
+  "object": "block",
+  "id": "1f6aa550-f576-80c1-9ddf-e90fdd1e8e20",
+  "parent": {
+    "type": "page_id",
+    "page_id": "1f6aa550-f576-802c-ab65-e3e8c49a8bcd"
+  },
+  "created_time": "2025-05-17T07:25:00.000Z",
+  "last_edited_time": "2025-05-17T07:25:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "1e3469e4-22cd-421f-b361-c1b3eab4f597"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "1e3469e4-22cd-421f-b361-c1b3eab4f597"
+  },
+  "has_children": false,
+  "archived": false,
+  "in_trash": false,
+  "type": "image",
+  "image": {
+    "caption": [
+      {
+        "type": "text",
+        "text": {
+          "content": "Rosette logo",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": "Rosette logo",
+        "href": null
+      }
+    ],
+    "type": "file",
+    "file": {
+      "url": "https://prod-files-secure.s3.us-west-2.amazonaws.com/4c6329c4-ddf4-4a16-8065-9bb204231c5d/32632a86-ac65-4998-a785-446e7160c31b/logo.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4664GLICZFU%2F20250518%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250518T052450Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELH%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIE8E4JnC5eYhdlvvlOj0WHJfxB9VCwZlZb5q5hH%2BdQcBAiEApcm6Xatg%2BkJrGd5CPHjlVIQcwMArca2ZFsAXorNvctsq%2FwMIahAAGgw2Mzc0MjMxODM4MDUiDHSkNJgca%2BHUN0%2FSYircAyR7XymXwImZJLzSxFaJ9iRAk2fx8sjbPrlSy7OAHkj%2Fw8emablnhwiPE7N7vKJvKJvDFY%2FylE64jQw51Ijj8rX0vYVp2txGhDsmGTKS%2FIahHA1m%2F7mTF5xQ1i5Dc8zqFzYj37Gbs91w6%2FliidHyFSILly%2FT%2FEjUdrLak4DoomH2cDTCytPksgQKI8LOk00BaexEbfc7k5J2AqHTRPH9iRHuVJq3oPQqxIGypGTHgEa%2FhuzMCOrbWkjw4FNvwh0V3koSgNHkw2YbQPYvAvAdHSSOqhmvrZ5c6QNVqIkA8R32p2Wk6R44RozXzCQGUCMUaDZxP2XPCRxqx4tkxY%2F2W4ozvpJAtHnDgnldKad9GsxNx4LJrNfTQizelENQGBVBU32S%2F3oZ4hNx%2FfO%2B%2F8YP6kV0Ai6DlRx6cJhSsEAJpVrIdiDW7051WDp%2F%2BZuF4Sc5a4LXwNa8l8QFW7Hr91TkEnLrXK2LpziBIj6%2Fo5l38vtdt5dt6aaY64fgRsNHOHjQMzhcrKhWkSM2eYUpP1ghbSii%2FtzarIzLOygKntlVJJNS20xaJ4zmcoBKetekGgi8NPXWAIfW11PkaOmtti57TS9SRvBbD9kRrIjayAZz0QSqBvFHe6TILITTwdOoMOvVpMEGOqUBZ8hq%2FR0tD6mTbnHq7ADv1WaZjNmSPlSXT6H0cjufmhKh3RpxmwlTHy21ZhI2ZiLYs48dTLQLRMxIlwhUNc3riIDu23xYP1lYYrmMa8ODMwOH2GKXoiRSs0ebcE6QQGgYtrnHrOhAucygMVflrplW7dxd6DXN95V37%2F25rTBFtxcw51lk%2Bj1bkVtRAt2lq9yLkXQ%2FZbQ7SSEvznrsDXVmXEzRuGkP&X-Amz-Signature=dac2625c1fd3e142149c1430793412e6f3ba7cda4baba22bd802b0262779a83b&X-Amz-SignedHeaders=host&x-id=GetObject",
+      "expiry_time": "2025-05-18T06:24:50.099Z"
+    }
+  },
+  "request_id": "17802736-09cd-49d3-b1bc-fd0408551152"
+}
