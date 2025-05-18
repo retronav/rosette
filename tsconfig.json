@@ -1,13 +1,13 @@
 {
-  "compilerOptions": {
-    "module": "esnext",
-    "target": "ESNext",
-    "moduleResolution": "node",
-    "outDir": "dist",
-    "emitDeclarationOnly": true,
-    "declaration": true,
-    "types": ["node"],
-    "resolveJsonModule": true,
-    "esModuleInterop": true
-  }
+	"compilerOptions": {
+		"module": "esnext",
+		"target": "ESNext",
+		"moduleResolution": "node",
+		"outDir": "dist",
+		"emitDeclarationOnly": true,
+		"declaration": true,
+		"types": ["node"],
+		"resolveJsonModule": true,
+		"esModuleInterop": true
+	}
 }

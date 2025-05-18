@@ -1,29 +1,24 @@
 {
-    "1f7aa550-f576-800e-9d96-de2d3e871578": {
-        "content": "<p class=\"\">HTML-Ipsum is maintained by <a href=\"https://www.governor.pa.gov/governor-wolf-announces-webfx-expansion-of-national-headquarters-in-dauphin-county-creation-of-80-jobs/\"><strong>WebFX</strong></a>. For more information about us, please visit <a href=\"https://clutch.co/profile/webfx\"><strong>WebFX Reviews</strong></a>. To learn more about the <a href=\"https://www.webfx.com/industries/\"><strong>industries</strong></a> we drive <a href=\"https://www.webfx.com/\"><strong>Internet marketing</strong></a> performormance for and our revenue driving services: <a href=\"https://www.webfx.com/seo-checker/\"><strong>SEO</strong></a>, <a href=\"https://www.webfx.com/ppc/services/\"><strong>PPC</strong></a>, <a href=\"https://www.webfx.com/social-media/pricing/\"><strong>social media</strong></a>, <a href=\"https://www.webfx.com/web-design/learn/best-web-design-companies/\"><strong>web design</strong></a>, <a href=\"https://www.webfx.com/local-seo/pricing/\"><strong>local SEO</strong></a> and online <a href=\"https://www.webfx.com/blog/business-advice/the-cost-of-advertising-nationally-broken-down-by-medium/\"><strong>advertising services</strong></a>.</p>",
-        "properties": {
-            "Created Date": "2025-05-10T00:00:00.000Z",
-            "Draft": false,
-            "Name": "A blog post",
-            "Summary": "",
-            "Tags": [
-                "lorem",
-                "ipsum"
-            ]
-        },
-        "slug": "a-blog-post"
-    },
-    "1f7aa550-f576-807a-ae3d-f630a4c78e1e": {
-        "content": "<p class=\"\">You’ve probably heard of <a href=\"https://www.webfx.com/tools/lorem-ipsum-generator/\"><strong>Lorem Ipsum</strong></a> before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.</p><p class=\"\"></p>",
-        "properties": {
-            "Created Date": "2025-05-18T00:00:00.000Z",
-            "Draft": true,
-            "Name": "Another blog post",
-            "Summary": "Summary for another blog post",
-            "Tags": [
-                "lorem"
-            ]
-        },
-        "slug": "another-blog-post"
-    }
+	"1f7aa550-f576-800e-9d96-de2d3e871578": {
+		"content": "<p class=\"\">HTML-Ipsum is maintained by <a href=\"https://www.governor.pa.gov/governor-wolf-announces-webfx-expansion-of-national-headquarters-in-dauphin-county-creation-of-80-jobs/\"><strong>WebFX</strong></a>. For more information about us, please visit <a href=\"https://clutch.co/profile/webfx\"><strong>WebFX Reviews</strong></a>. To learn more about the <a href=\"https://www.webfx.com/industries/\"><strong>industries</strong></a> we drive <a href=\"https://www.webfx.com/\"><strong>Internet marketing</strong></a> performormance for and our revenue driving services: <a href=\"https://www.webfx.com/seo-checker/\"><strong>SEO</strong></a>, <a href=\"https://www.webfx.com/ppc/services/\"><strong>PPC</strong></a>, <a href=\"https://www.webfx.com/social-media/pricing/\"><strong>social media</strong></a>, <a href=\"https://www.webfx.com/web-design/learn/best-web-design-companies/\"><strong>web design</strong></a>, <a href=\"https://www.webfx.com/local-seo/pricing/\"><strong>local SEO</strong></a> and online <a href=\"https://www.webfx.com/blog/business-advice/the-cost-of-advertising-nationally-broken-down-by-medium/\"><strong>advertising services</strong></a>.</p>",
+		"properties": {
+			"Created Date": "2025-05-10T00:00:00.000Z",
+			"Draft": false,
+			"Name": "A blog post",
+			"Summary": "",
+			"Tags": ["lorem", "ipsum"]
+		},
+		"slug": "a-blog-post"
+	},
+	"1f7aa550-f576-807a-ae3d-f630a4c78e1e": {
+		"content": "<p class=\"\">You’ve probably heard of <a href=\"https://www.webfx.com/tools/lorem-ipsum-generator/\"><strong>Lorem Ipsum</strong></a> before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.</p><p class=\"\"></p>",
+		"properties": {
+			"Created Date": "2025-05-18T00:00:00.000Z",
+			"Draft": true,
+			"Name": "Another blog post",
+			"Summary": "Summary for another blog post",
+			"Tags": ["lorem"]
+		},
+		"slug": "another-blog-post"
+	}
 }
