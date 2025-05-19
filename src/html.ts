@@ -1,6 +1,6 @@
 import type { Element } from "hast";
 import { h } from "hastscript";
-import { z } from "zod";
+import { z } from "zod/v4";
 
 export enum COLORS {
 	BLUE = "blue",
@@ -68,7 +68,7 @@ export const richText = z
 		}),
 		annotations
 	})
-	.passthrough()
+	.loose()
 	.transform((data) => {
 		const { text } = data;
 
@@ -89,7 +89,7 @@ export const richEquation = z
 		}),
 		annotations
 	})
-	.passthrough()
+	.loose()
 	.transform((data) => {
 		const { equation } = data;
 		// rehype-katex classes
@@ -111,7 +111,7 @@ export const richMentionPage = z
 		plain_text: z.string(),
 		href: z.string()
 	})
-	.passthrough()
+	.loose()
 	.transform((data) => {
 		const { mention, plain_text } = data;
 		const { page } = mention;
@@ -129,7 +129,7 @@ export const heading1 = z
 			is_toggleable: z.boolean().optional()
 		})
 	})
-	.passthrough()
+	.loose()
 	.transform((data) => {
 		const { heading_1 } = data;
 		const node = h("h1", heading_1.rich_text);
@@ -144,7 +144,7 @@ export const heading2 = z
 			is_toggleable: z.boolean().optional()
 		})
 	})
-	.passthrough()
+	.loose()
 	.transform((data) => {
 		const { heading_2 } = data;
 		const node = h("h2", heading_2.rich_text);
@@ -159,7 +159,7 @@ export const heading3 = z
 			is_toggleable: z.boolean().optional()
 		})
 	})
-	.passthrough()
+	.loose()
 	.transform((data) => {
 		const { heading_3 } = data;
 		const node = h("h3", heading_3.rich_text);
@@ -174,7 +174,7 @@ export const paragraph = z
 			color: z.nativeEnum(COLORS).optional()
 		})
 	})
-	.passthrough()
+	.loose()
 	.transform((data) => {
 		const { paragraph } = data;
 		const node = h(
@@ -193,7 +193,7 @@ export const blockQuote = z
 			color: z.nativeEnum(COLORS).optional()
 		})
 	})
-	.passthrough()
+	.loose()
 	.transform((data) => {
 		const { quote } = data;
 		const node = h(
@@ -212,7 +212,7 @@ export const code = z
 			language: z.string()
 		})
 	})
-	.passthrough()
+	.loose()
 	.transform((data) => {
 		const { code } = data;
 		const node = h(
@@ -247,7 +247,7 @@ export const image = z
 				})
 			)
 	})
-	.passthrough()
+	.loose()
 	.transform((data) => {
 		const { image } = data;
 		const node = h(
@@ -289,7 +289,7 @@ export const video = z
 				})
 			)
 	})
-	.passthrough()
+	.loose()
 	.transform((data) => {
 		const { video } = data;
 		const node = h(
@@ -317,7 +317,7 @@ const toggle = z
 			children: z.array(z.lazy(() => element)).optional()
 		})
 	})
-	.passthrough()
+	.loose()
 	.transform((data) => {
 		const { toggle } = data;
 		const node = h(
@@ -335,7 +335,7 @@ export const tableRow = z
 			cells: z.array(z.array(blockRichText))
 		})
 	})
-	.passthrough()
+	.loose()
 	.transform((data) => {
 		const { table_row } = data;
 		const node = h(
@@ -355,7 +355,7 @@ export const table = z
 			children: z.array(z.lazy(() => tableRow))
 		})
 	})
-	.passthrough()
+	.loose()
 	.transform((data) => {
 		const { table } = data;
 		// split the children into rows
@@ -376,7 +376,7 @@ export const bulletedListItem = z
 			children: z.array(z.lazy(() => element)).optional()
 		})
 	})
-	.passthrough()
+	.loose()
 	.transform((data) => {
 		const { bulleted_list_item } = data;
 		const node = h(
@@ -401,7 +401,7 @@ export const numberedListItem = z
 			children: z.array(z.lazy(() => element)).optional()
 		})
 	})
-	.passthrough()
+	.loose()
 	.transform((data) => {
 		const { numbered_list_item } = data;
 		const node = h(
@@ -423,11 +423,11 @@ export const toDo = z
 		to_do: z.object({
 			rich_text: z.array(blockRichText),
 			checked: z.boolean(),
-			color: z.nativeEnum(COLORS).optional(),
+			color: z.enum(COLORS).optional(),
 			children: z.array(z.lazy(() => element)).optional()
 		})
 	})
-	.passthrough()
+	.loose()
 	.transform((data) => {
 		const { to_do } = data;
 		const node = h(
@@ -444,7 +444,7 @@ export const toDo = z
 		return node;
 	});
 
-export const equation = richEquation._def.schema
+export const equation = richEquation.in
 	.omit({ annotations: true })
 	.transform((data) => {
 		const { equation } = data;
@@ -452,8 +452,7 @@ export const equation = richEquation._def.schema
 		return node;
 	});
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export const element: z.ZodType<Element, any, any> = z.union([
+const blockTransformers = [
 	heading1,
 	heading2,
 	heading3,
@@ -468,4 +467,11 @@ export const element: z.ZodType<Element, any, any> = z.union([
 	table,
 	toggle,
 	equation
-]);
+];
+
+export const element = z.union(blockTransformers);
+
+/** @internal */
+export const _discriminatedElementUnion = z.discriminatedUnion(
+	blockTransformers.map((t: z.ZodPipe) => t.in)
+);

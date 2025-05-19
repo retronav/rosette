@@ -1,7 +1,8 @@
 import type { Client } from "@notionhq/client";
 import type { PageObjectResponse } from "@notionhq/client";
-import { type ZodType, z } from "zod";
-import { NotionConverter } from "./converter";
+import { type ZodType, z } from "zod/v4";
+import { NotionConverter } from "./converter.js";
+import { explainZodError } from "./util.js";
 
 /**
  * Manages interactions with a Notion database, processing entries and converting them to a structured format.
@@ -57,7 +58,13 @@ export class NotionDatabaseManager<T extends ZodType> {
 
 		for (const entry of response.results as PageObjectResponse[]) {
 			try {
-				const properties = this.schema.parse(entry.properties);
+				const parsed = this.schema.safeParse(entry.properties);
+				if (!parsed.success) {
+					throw new Error(
+						`Failed to parse schema for page ID: ${entry.id}\n${explainZodError(parsed.error, entry.properties)}`
+					);
+				}
+				const { data: properties } = parsed;
 				const slug = options.slugger({ ...properties });
 				this.slugs.set(entry.id, slug);
 				this.entries.set(entry.id, {
@@ -66,14 +73,7 @@ export class NotionDatabaseManager<T extends ZodType> {
 					content: ""
 				});
 			} catch (error) {
-				let message = `Failed to parse schema for page ID ${entry.id}.`;
-				if (error instanceof z.ZodError) {
-					message += ` Validation issues: ${JSON.stringify(error.issues, null, 2)}`;
-				} else if (error instanceof Error) {
-					message += ` Original error: ${error.message}`;
-				} else {
-					message += ` Original error: ${String(error)}`;
-				}
+				const message = `Failed to parse schema for page ID ${entry.id}.  Original error: ${String(error)}`;
 				const detailedError = new Error(message);
 				if (error instanceof Error) {
 					(detailedError as Error).cause = error;

@@ -3,7 +3,9 @@ import type { BlockObjectResponse } from "@notionhq/client";
 import type { Element } from "hast";
 import { toHtml } from "hast-util-to-html";
 import { h } from "hastscript";
-import { element } from "./html";
+import { z } from "zod/v4";
+import { _discriminatedElementUnion, element } from "./html.js";
+import { explainZodError } from "./util.js";
 
 export type NotionBlock = BlockObjectResponse & {
 	children?: NotionBlock[];
@@ -34,6 +36,14 @@ export class NotionConverter {
 	}
 
 	#blockToHastTree(block: NotionBlock): Element {
+		// discriminated union provides better error message
+		// TODO: find a way to do this witout another zod pass
+		const parsed = _discriminatedElementUnion.safeParse(block);
+		if (!parsed.success) {
+			throw new Error(
+				`Failed to parse block: ${block.id} (${block.type})\n${explainZodError(parsed.error, block)}`
+			);
+		}
 		const node = element.parse(block);
 		if (block.children)
 			node.children = block.children.map((b) => this.#blockToHastTree(b));
