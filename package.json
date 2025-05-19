@@ -4,24 +4,16 @@
 	"type": "module",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
-	"files": [
-		"dist",
-		"README.md",
-		"LICENSE"
-	],
+	"files": ["dist", "README.md", "LICENSE", "assets"],
 	"scripts": {
 		"build": "tsup src/index.ts --format cjs,esm --dts --sourcemap --clean",
 		"ci": "biome ci",
-		"format": "biome lint --write",
+		"format": "biome format --write",
 		"lint": "biome lint",
 		"test": "vitest run --coverage",
 		"release": "changeset publish"
 	},
-	"keywords": [
-		"notion",
-		"notion-api",
-		"cms"
-	],
+	"keywords": ["notion", "notion-api", "cms"],
 	"author": "Pranav Karawale",
 	"license": "Apache-2.0",
 	"description": "Get Notion databases in a structured format and convert Notion pages to HTML.",

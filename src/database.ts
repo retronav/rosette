@@ -1,6 +1,6 @@
 import type { Client } from "@notionhq/client";
 import type { PageObjectResponse } from "@notionhq/client";
-import { type ZodType, z } from "zod/v4";
+import type { ZodType, z } from "zod/v4";
 import { NotionConverter } from "./converter.js";
 import { explainZodError } from "./util.js";
 
