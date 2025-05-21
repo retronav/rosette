@@ -473,5 +473,6 @@ export const element = z.union(blockTransformers);
 
 /** @internal */
 export const _discriminatedElementUnion = z.discriminatedUnion(
+	"type",
 	blockTransformers.map((t: z.ZodPipe) => t.in)
 );
