@@ -3,7 +3,6 @@ import type { BlockObjectResponse } from "@notionhq/client";
 import type { Element } from "hast";
 import { toHtml } from "hast-util-to-html";
 import { h } from "hastscript";
-import { z } from "zod/v4";
 import { _discriminatedElementUnion, element } from "./html.js";
 import { explainZodError } from "./util.js";
 

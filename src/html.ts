@@ -1,6 +1,6 @@
 import type { Element } from "hast";
 import { h } from "hastscript";
-import { z } from "zod/v4";
+import * as z from "zod/v4";
 
 export enum COLORS {
 	BLUE = "blue",

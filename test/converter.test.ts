@@ -2,8 +2,8 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import type { BlockObjectResponse } from "@notionhq/client";
 import { beforeAll, describe, expect, it } from "vitest";
-import { NotionConverter } from "../src"; // Assuming NotionBlock is exported from ../src
-import { createMockNotionClient } from "./mocks";
+import { NotionConverter } from "../src/index.js";
+import { createMockNotionClient } from "./mocks.js";
 
 const baseFixturesDir = path.join(__dirname, "fixtures", "NotionConverter");
 const blocksDir = path.join(baseFixturesDir, "blocks");

@@ -5,9 +5,9 @@ import type {
 	DatabaseObjectResponse
 } from "@notionhq/client";
 import { beforeAll, describe, expect, it } from "vitest";
-import { z } from "zod";
-import { NotionDatabaseManager, properties } from "../src"; // Assuming NotionBlock is exported from ../src
-import { createMockNotionClient } from "./mocks";
+import * as z from "zod/v4";
+import { NotionDatabaseManager, properties } from "../src/index.js";
+import { createMockNotionClient } from "./mocks.js";
 
 const baseFixturesDir = path.join(
 	__dirname,

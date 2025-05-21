@@ -1,4 +1,4 @@
-import { z } from "zod";
+import * as z from "zod/v4";
 
 // Helper schema for Notion's DateResponse object
 const dateResponseSchema = z.object({

@@ -1,6 +1,6 @@
 import type { Client } from "@notionhq/client";
 import type { PageObjectResponse } from "@notionhq/client";
-import type { ZodType, z } from "zod/v4";
+import type * as z from "zod/v4";
 import { NotionConverter } from "./converter.js";
 import { explainZodError } from "./util.js";
 
@@ -8,7 +8,7 @@ import { explainZodError } from "./util.js";
  * Manages interactions with a Notion database, processing entries and converting them to a structured format.
  * @template T - A Zod schema type that defines the structure of the database properties.
  */
-export class NotionDatabaseManager<T extends ZodType> {
+export class NotionDatabaseManager<T extends z.ZodObject> {
 	private converter: NotionConverter;
 
 	/**
@@ -49,7 +49,7 @@ export class NotionDatabaseManager<T extends ZodType> {
 	 */
 	async process(options: {
 		filter?: Parameters<Client["databases"]["query"]>["0"]["filter"];
-		slugger: (properties: z.infer<T>) => string;
+		slugger: (properties: z.output<T>) => string;
 	}) {
 		const response = await this.notion.databases.query({
 			filter: options.filter,
