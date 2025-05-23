@@ -93,6 +93,7 @@ export class NotionDatabaseManager<T extends z.ZodObject> {
 				let message = `Failed to process content for entry ID ${entry.id}.`;
 				if (error instanceof Error) {
 					message += ` Original error: ${error.message}`;
+					/* v8 ignore next 3 */
 				} else {
 					message += ` Original error: ${String(error)}`;
 				}

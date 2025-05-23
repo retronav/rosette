@@ -4,7 +4,7 @@ import type {
 	DatabaseObjectResponse
 } from "@notionhq/client";
 import { vi } from "vitest";
-import type { NotionBlock } from "../src";
+import type { NotionBlock } from "../src/index.js";
 
 // Helper function to recursively build a block with its children
 function getFullBlockRecursiveHelper(

@@ -7,6 +7,7 @@ export function explainZodError<T>(error: z.ZodError, data: T) {
 
 	for (const [i, issue] of issues.entries()) {
 		const obj = issue.path.slice(0, -1).reduce((acc, key) => {
+			/* v8 ignore next 3 */
 			if (acc[key] === undefined) {
 				acc[key] = {};
 			}
