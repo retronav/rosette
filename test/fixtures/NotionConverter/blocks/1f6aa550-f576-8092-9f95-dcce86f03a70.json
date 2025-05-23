@@ -6,7 +6,7 @@
 		"page_id": "1f6aa550-f576-802c-ab65-e3e8c49a8bcd"
 	},
 	"created_time": "2025-05-17T07:30:00.000Z",
-	"last_edited_time": "2025-05-17T07:30:00.000Z",
+	"last_edited_time": "2025-05-23T15:59:00.000Z",
 	"created_by": {
 		"object": "user",
 		"id": "1e3469e4-22cd-421f-b361-c1b3eab4f597"
@@ -18,10 +18,28 @@
 	"has_children": false,
 	"archived": false,
 	"in_trash": false,
-	"type": "paragraph",
-	"paragraph": {
-		"rich_text": [],
+	"type": "to_do",
+	"to_do": {
+		"rich_text": [
+			{
+				"type": "text",
+				"text": {
+					"content": "Eat apples",
+					"link": null
+				},
+				"annotations": {
+					"bold": false,
+					"italic": false,
+					"strikethrough": false,
+					"underline": false,
+					"code": false,
+					"color": "default"
+				},
+				"plain_text": "Eat apples",
+				"href": null
+			}
+		],
+		"checked": true,
 		"color": "default"
-	},
-	"request_id": "9f3df932-af59-4bdd-99f2-1a3ae9bb9e90"
+	}
 }

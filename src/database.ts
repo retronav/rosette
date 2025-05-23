@@ -109,16 +109,10 @@ export class NotionDatabaseManager<T extends z.ZodObject> {
 
 		for (const { entryId, htmlContent } of processedContents) {
 			const existingEntry = this.entries.get(entryId);
-			if (existingEntry) {
-				this.entries.set(entryId, {
-					...existingEntry,
-					content: htmlContent
-				});
-			} else {
-				throw new Error(
-					`[NotionDatabaseManager] Entry with ID ${entryId} was not found for content update. It should have been populated in the initial processing stage.`
-				);
-			}
+			this.entries.set(entryId, {
+				...existingEntry,
+				content: htmlContent
+			});
 		}
 
 		return this.entries;

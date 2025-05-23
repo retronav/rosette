@@ -5,7 +5,7 @@
 			"object": "page",
 			"id": "1f7aa550-f576-807a-ae3d-f630a4c78e1e",
 			"created_time": "2025-05-18T06:36:00.000Z",
-			"last_edited_time": "2025-05-18T06:37:00.000Z",
+			"last_edited_time": "2025-05-23T17:52:00.000Z",
 			"created_by": {
 				"object": "user",
 				"id": "1e3469e4-22cd-421f-b361-c1b3eab4f597"
@@ -47,6 +47,20 @@
 					"id": "QIDi",
 					"type": "checkbox",
 					"checkbox": true
+				},
+				"Index": {
+					"id": "%60%3F%3Cs",
+					"type": "number",
+					"number": 2
+				},
+				"Type": {
+					"id": "bW%3De",
+					"type": "select",
+					"select": {
+						"id": "|Kwi",
+						"name": "Post",
+						"color": "purple"
+					}
 				},
 				"Summary": {
 					"id": "~sC%5C",
@@ -102,7 +116,7 @@
 			"object": "page",
 			"id": "1f7aa550-f576-800e-9d96-de2d3e871578",
 			"created_time": "2025-05-18T06:36:00.000Z",
-			"last_edited_time": "2025-05-18T06:38:00.000Z",
+			"last_edited_time": "2025-05-23T17:52:00.000Z",
 			"created_by": {
 				"object": "user",
 				"id": "1e3469e4-22cd-421f-b361-c1b3eab4f597"
@@ -150,6 +164,20 @@
 					"type": "checkbox",
 					"checkbox": false
 				},
+				"Index": {
+					"id": "%60%3F%3Cs",
+					"type": "number",
+					"number": 1
+				},
+				"Type": {
+					"id": "bW%3De",
+					"type": "select",
+					"select": {
+						"id": "|Kwi",
+						"name": "Post",
+						"color": "purple"
+					}
+				},
 				"Summary": {
 					"id": "~sC%5C",
 					"type": "rich_text",
@@ -187,5 +215,5 @@
 	"has_more": false,
 	"type": "page_or_database",
 	"page_or_database": {},
-	"request_id": "f905d0ad-37fe-4150-84d9-65b1ff428e17"
+	"request_id": "0d7a6c3a-7b21-4661-950c-3bc173289629"
 }

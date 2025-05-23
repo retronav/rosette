@@ -21,6 +21,5 @@
 	"type": "equation",
 	"equation": {
 		"expression": "x^n + y^n = z^n"
-	},
-	"request_id": "aa8f3be8-0c03-486c-b367-4b74c5104a2b"
+	}
 }

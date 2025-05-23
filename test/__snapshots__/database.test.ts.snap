@@ -7,11 +7,13 @@ Map {
     "properties": {
       "Created Date": 2025-05-18T00:00:00.000Z,
       "Draft": true,
+      "Index": 2,
       "Name": "Another blog post",
       "Summary": "Summary for another blog post",
       "Tags": [
         "lorem",
       ],
+      "Type": "Post",
     },
     "slug": "another-blog-post",
   },
@@ -20,12 +22,14 @@ Map {
     "properties": {
       "Created Date": 2025-05-10T00:00:00.000Z,
       "Draft": false,
+      "Index": 1,
       "Name": "A blog post",
       "Summary": "",
       "Tags": [
         "lorem",
         "ipsum",
       ],
+      "Type": "Post",
     },
     "slug": "a-blog-post",
   },

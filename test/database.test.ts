@@ -84,7 +84,9 @@ describe("NotionDatabaseManager", () => {
 		Summary: properties.text,
 		"Created Date": properties.date,
 		Tags: properties.multiSelect,
-		Draft: properties.checkbox
+		Draft: properties.checkbox,
+		Type: properties.select,
+		Index: properties.number
 	});
 
 	const manager = new NotionDatabaseManager(
@@ -99,17 +101,6 @@ describe("NotionDatabaseManager", () => {
 				return properties.Name.toLowerCase().replace(/\s+/g, "-");
 			}
 		});
-
-		const snapshot = fs.readFileSync(
-			path.join(
-				baseFixturesDir,
-				"../..",
-				"outputs",
-				"NotionDatabaseManager",
-				"output.json"
-			),
-			"utf-8"
-		);
 
 		expect(result).toMatchSnapshot();
 	});
@@ -169,6 +160,16 @@ describe("NotionDatabaseManager", () => {
 										id: "date",
 										type: "date",
 										date: { start: "2025-01-01" }
+									},
+									Index: {
+										id: "index",
+										type: "number",
+										number: 1
+									},
+									Type: {
+										id: "type",
+										type: "select",
+										select: { name: "Type" }
 									},
 									Tags: {
 										id: "tags",
