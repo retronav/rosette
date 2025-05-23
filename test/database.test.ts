@@ -150,41 +150,45 @@ describe("NotionDatabaseManager", () => {
 				...mockNotionClient,
 				databases: {
 					query: vi.fn().mockResolvedValue({
-						results: [{
-							id: "test-page-id",
-							object: "page",
-							properties: {
-								Name: {
-									id: "title",
-									type: "title",
-									title: [{ plain_text: "Test Page" }]
-								},
-								Summary: {
-									id: "summary",
-									type: "rich_text",
-									rich_text: [{ plain_text: "Test summary" }]
-								},
-								"Created Date": {
-									id: "date",
-									type: "date",
-									date: { start: "2025-01-01" }
-								},
-								Tags: {
-									id: "tags",
-									type: "multi_select",
-									multi_select: [{ name: "test" }]
-								},
-								Draft: {
-									id: "draft",
-									type: "checkbox",
-									checkbox: false
+						results: [
+							{
+								id: "test-page-id",
+								object: "page",
+								properties: {
+									Name: {
+										id: "title",
+										type: "title",
+										title: [{ plain_text: "Test Page" }]
+									},
+									Summary: {
+										id: "summary",
+										type: "rich_text",
+										rich_text: [{ plain_text: "Test summary" }]
+									},
+									"Created Date": {
+										id: "date",
+										type: "date",
+										date: { start: "2025-01-01" }
+									},
+									Tags: {
+										id: "tags",
+										type: "multi_select",
+										multi_select: [{ name: "test" }]
+									},
+									Draft: {
+										id: "draft",
+										type: "checkbox",
+										checkbox: false
+									}
 								}
 							}
-						}]
+						]
 					})
 				},
 				blocks: {
-					retrieve: vi.fn().mockRejectedValue(new Error("Network error during block fetch")),
+					retrieve: vi
+						.fn()
+						.mockRejectedValue(new Error("Network error during block fetch")),
 					children: {
 						list: vi.fn().mockRejectedValue(new Error("Children fetch failed"))
 					}
@@ -240,7 +244,7 @@ describe("NotionDatabaseManager", () => {
 				databases: {
 					query: vi.fn().mockImplementation((params) => {
 						// Simulate validation that would happen in the real Notion API
-						if (params.filter && typeof params.filter.invalid === 'string') {
+						if (params.filter && typeof params.filter.invalid === "string") {
 							throw new Error("Invalid filter structure");
 						}
 						return Promise.resolve({ results: [] });

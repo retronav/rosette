@@ -55,7 +55,9 @@ describe("NotionConverter", () => {
 	const converter = new NotionConverter(mockClient);
 
 	it("converts blocks to HTML", async () => {
-		const pageData = await converter.fetch("1f6aa550-f576-802c-ab65-e3e8c49a8bcd");
+		const pageData = await converter.fetch(
+			"1f6aa550-f576-802c-ab65-e3e8c49a8bcd"
+		);
 		// Extract the children blocks from the page data
 		const blocks = pageData.children;
 		const html = converter.blocksToHtml(blocks);
@@ -74,7 +76,9 @@ describe("NotionConverter", () => {
 
 			expect(() => {
 				converter.blocksToHtml([invalidBlock]);
-			}).toThrow(/Failed to parse block: invalid-block-123 \(unsupported_block_type\)/);
+			}).toThrow(
+				/Failed to parse block: invalid-block-123 \(unsupported_block_type\)/
+			);
 		});
 
 		it("should throw error for malformed block structure", () => {
@@ -87,7 +91,9 @@ describe("NotionConverter", () => {
 
 			expect(() => {
 				converter.blocksToHtml([malformedBlock]);
-			}).toThrow(/Failed to parse block: malformed-paragraph-456 \(paragraph\)/);
+			}).toThrow(
+				/Failed to parse block: malformed-paragraph-456 \(paragraph\)/
+			);
 		});
 
 		it("should handle network errors during fetch", async () => {
@@ -119,9 +125,9 @@ describe("NotionConverter", () => {
 
 			const converter = new NotionConverter(mockClientWithMissingBlocks);
 
-			await expect(
-				converter.fetch("missing-block-id")
-			).rejects.toThrow("Block not found");
+			await expect(converter.fetch("missing-block-id")).rejects.toThrow(
+				"Block not found"
+			);
 		});
 
 		it("should handle empty blocks array gracefully", () => {
@@ -141,7 +147,11 @@ describe("NotionConverter", () => {
 					children: {
 						list: vi.fn().mockResolvedValue({
 							results: [
-								{ id: "child-1", type: "paragraph", paragraph: { rich_text: [] } }
+								{
+									id: "child-1",
+									type: "paragraph",
+									paragraph: { rich_text: [] }
+								}
 							]
 						})
 					}
@@ -161,9 +171,9 @@ describe("NotionConverter", () => {
 				})
 				.mockRejectedValueOnce(new Error("Child block fetch failed"));
 
-			await expect(
-				converter.fetch("test-block")
-			).rejects.toThrow("Child block fetch failed");
+			await expect(converter.fetch("test-block")).rejects.toThrow(
+				"Child block fetch failed"
+			);
 		});
 
 		it("should handle toggle blocks with missing rich_text", () => {
