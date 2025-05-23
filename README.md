@@ -19,18 +19,18 @@ First, you'll need a Notion API key and a database ID. You can get your API key 
 ```typescript
 import { NotionDatabaseManager, properties } from "@retronav/rosette";
 import { Client } from "@notionhq/client";
-import { z } from "zod";
+import { z } from "zod/v4";
 
 // 1. Initialize the Notion client
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
 // 2. Define your database schema using Zod and Rosette's schema helpers
 const mySchema = z.object({
-  Title: properties.title, // For 'Title' property
-  Description: properties.text, // For 'Text' or 'Rich Text' property
-  Date: properties.date, // For 'Date' property
+  Name: properties.title, // For 'Title' property
+  Summary: properties.text, // For 'Text' or 'Rich Text' property
+  "Created Date": properties.date, // For 'Date' property
   Tags: properties.multiSelect, // For 'Multi-select' property
-  Published: properties.checkbox // For 'Checkbox' property
+  Draft: properties.checkbox // For 'Checkbox' property
   // Add more properties as needed, matching your Notion database structure
 });
 
@@ -44,18 +44,19 @@ async function main() {
     const entries = await manager.process({
       // Optional: Add a filter if needed
       // filter: {
-      //   property: 'Published',
+      //   property: 'Draft',
       //   checkbox: {
-      //     equals: true,
+      //     equals: false,
       //   },
       // },
-      // Optional: Customize slug generation
-      // slugger: (properties) => customSlugifyFunction(properties.Title),
+      // Required: Function to generate slugs from entry properties
+      slugger: (properties) => properties.Name.toLowerCase().replace(/\s+/g, "-"),
     });
 
     entries.forEach((entry, id) => {
       console.log("Entry ID:", id);
       console.log("Properties:", entry.properties); // Parsed and typed according to your schema
+      console.log("Slug:", entry.slug); // Generated slug
       console.log("HTML Content:", entry.content); // HTML content of the Notion page
     });
   } catch (error) {
