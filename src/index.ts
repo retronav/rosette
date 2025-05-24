@@ -1,3 +1,3 @@
-export * from "./database";
-export * from "./converter";
-export * from "./properties";
+export * from "./database.js";
+export * from "./converter.js";
+export * from "./properties.js";

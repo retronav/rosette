@@ -1,0 +1,80 @@
+{
+	"object": "block",
+	"id": "1f7aa550-f576-8022-960f-f8aa6a96ce54",
+	"parent": {
+		"type": "page_id",
+		"page_id": "1f7aa550-f576-807a-ae3d-f630a4c78e1e"
+	},
+	"created_time": "2025-05-18T06:37:00.000Z",
+	"last_edited_time": "2025-05-18T06:37:00.000Z",
+	"created_by": {
+		"object": "user",
+		"id": "1e3469e4-22cd-421f-b361-c1b3eab4f597"
+	},
+	"last_edited_by": {
+		"object": "user",
+		"id": "1e3469e4-22cd-421f-b361-c1b3eab4f597"
+	},
+	"has_children": false,
+	"archived": false,
+	"in_trash": false,
+	"type": "paragraph",
+	"paragraph": {
+		"rich_text": [
+			{
+				"type": "text",
+				"text": {
+					"content": "You’ve probably heard of ",
+					"link": null
+				},
+				"annotations": {
+					"bold": false,
+					"italic": false,
+					"strikethrough": false,
+					"underline": false,
+					"code": false,
+					"color": "default"
+				},
+				"plain_text": "You’ve probably heard of ",
+				"href": null
+			},
+			{
+				"type": "text",
+				"text": {
+					"content": "Lorem Ipsum",
+					"link": {
+						"url": "https://www.webfx.com/tools/lorem-ipsum-generator/"
+					}
+				},
+				"annotations": {
+					"bold": true,
+					"italic": false,
+					"strikethrough": false,
+					"underline": false,
+					"code": false,
+					"color": "default"
+				},
+				"plain_text": "Lorem Ipsum",
+				"href": "https://www.webfx.com/tools/lorem-ipsum-generator/"
+			},
+			{
+				"type": "text",
+				"text": {
+					"content": " before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.",
+					"link": null
+				},
+				"annotations": {
+					"bold": false,
+					"italic": false,
+					"strikethrough": false,
+					"underline": false,
+					"code": false,
+					"color": "default"
+				},
+				"plain_text": " before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.",
+				"href": null
+			}
+		],
+		"color": "default"
+	}
+}
