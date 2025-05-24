@@ -80,13 +80,13 @@ describe("NotionDatabaseManager", () => {
 	);
 
 	const schema = z.object({
-		Name: properties.title,
-		Summary: properties.text,
-		"Created Date": properties.date,
-		Tags: properties.multiSelect,
-		Draft: properties.checkbox,
-		Type: properties.select,
-		Index: properties.number
+		Name: properties.title(),
+		Summary: properties.text(),
+		"Created Date": properties.date(),
+		Tags: properties.multiSelect(),
+		Draft: properties.checkbox(),
+		Type: properties.select({ enum: ["Post", "Note"] }),
+		Index: properties.number()
 	});
 
 	const manager = new NotionDatabaseManager(
@@ -169,7 +169,7 @@ describe("NotionDatabaseManager", () => {
 									Type: {
 										id: "type",
 										type: "select",
-										select: { name: "Type" }
+										select: { name: "Post" }
 									},
 									Tags: {
 										id: "tags",

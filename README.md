@@ -16,6 +16,8 @@ npm install @retronav/rosette
 
 First, you'll need a Notion API key and a database ID. You can get your API key from [Notion's integrations page](https://www.notion.so/my-integrations).
 
+### Database example
+
 ```typescript
 import { NotionDatabaseManager, properties } from "@retronav/rosette";
 import { Client } from "@notionhq/client";
@@ -26,11 +28,11 @@ const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
 // 2. Define your database schema using Zod and Rosette's schema helpers
 const mySchema = z.object({
-  Name: properties.title, // For 'Title' property
-  Summary: properties.text, // For 'Text' or 'Rich Text' property
-  "Created Date": properties.date, // For 'Date' property
-  Tags: properties.multiSelect, // For 'Multi-select' property
-  Draft: properties.checkbox // For 'Checkbox' property
+  Name: properties.title(),
+  Summary: properties.text(),
+  "Created Date": properties.date(),
+  Tags: properties.multiSelect(),
+  Draft: properties.checkbox()
   // Add more properties as needed, matching your Notion database structure
 });
 
